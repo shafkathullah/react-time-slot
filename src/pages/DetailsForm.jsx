@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
+
 import to12 from "../utils/to12";
+import InputText from "../comps/InputText";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -60,50 +62,26 @@ function DetailsForm() {
       </h1>
       <div className="w-1/3 mt-10 mx-auto">
         <form onSubmit={handleSubmit}>
-          <div className="mb-8 flex flex-col">
-            <label className="text-sm text-gray-700 " htmlFor="firstName">
-              First name
-            </label>
-            <input
-              className="bg-gray-100 rounded text-lg px-4 py-2 text-gray-700"
-              required
-              defaultValue={slot.details?.firstName}
-              type="text"
-              name="firstName"
-              id="firstName"
-            />
-          </div>
-          <div className="mb-8 flex flex-col">
-            <label className="text-sm text-gray-700 " htmlFor="lastName">
-              Last name
-            </label>
-            <input
-              className="bg-gray-100 rounded text-lg px-4 py-2 text-gray-700"
-              required
-              defaultValue={slot.details?.lastName}
-              type="text"
-              name="lastName"
-              id="lastName"
-            />
-          </div>
-          <div className="mb-8 flex flex-col">
-            <label className="text-sm text-gray-700 " htmlFor="phone">
-              Phone number
-            </label>
-            <input
-              className="bg-gray-100 rounded text-lg px-4 py-2 text-gray-700"
-              required
-              defaultValue={slot.details?.phone}
-              type="tel"
-              name="phone"
-              id="phone"
-            />
-          </div>
+          <InputText
+            id="firstName"
+            label="First Name"
+            defaultValue={slot.details?.firstName}
+          />
+          <InputText
+            id="lastName"
+            label="Last Name"
+            defaultValue={slot.details?.lastName}
+          />
+          <InputText
+            id="phone"
+            label="Phone"
+            defaultValue={slot.details?.phone}
+          />
           <div className="flex">
             <button
               type="button"
               onClick={handleCancel}
-              className="w-1/2 mr-2 py-3 border font-semibold text-gray-600 rounded hover:bg-gray-100"
+              className="w-1/2 mr-2 py-3 font-semibold text-gray-600 rounded hover:bg-gray-100"
             >
               Cancel
             </button>
